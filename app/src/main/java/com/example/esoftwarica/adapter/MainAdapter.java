@@ -75,7 +75,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.StudentViewHol
                 @Override
                 public void onClick(View v) {
                     modelStudent list = studentsList.get(getAdapterPosition());
-                    Toast.makeText(mContext, list.getName(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, list.getName(), Toast.LENGTH_SHORT).show();
                 }
             });
 

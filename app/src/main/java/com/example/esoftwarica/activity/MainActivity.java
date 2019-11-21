@@ -40,8 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         studentList = new ArrayList<>();
-        studentList.add(new modelStudent("Amit Pradhan", "KTM", "Male", 23, R.drawable.ic_person));
-        studentList.add(new modelStudent("Uttam Tamang", "KTM", "Male", 22, R.drawable.ic_person));
+        studentList.add(new modelStudent("Amit Pradhan", "KTM", "Male", 23, R.drawable.male));
+        studentList.add(new modelStudent("Gagan Dai", "Khokana", "Male", 22, R.drawable.male));
+        studentList.add(new modelStudent("Daisyna Shrestha", "Lalitpur", "Female", 20, R.drawable.female));
+        studentList.add(new modelStudent("Bibel Dahal", "Gaighat", "Male", 21, R.drawable.male));
+
 
 
 

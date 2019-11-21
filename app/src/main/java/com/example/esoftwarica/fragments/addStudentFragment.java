@@ -41,46 +41,47 @@ public class addStudentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 // Validation
-                if (name.equals("")) {
-                    name.setError("You did not enter a username");
+                if (name.getText().toString().length()==0) {
+                    name.setError("Please enter your username");
                     return;
                 }
-                if (age.equals("")) {
-                    age.setError("Enter age");
-                    return;
-
-                }
-                if (address.equals("")) {
-                    address.setError("Enter address");
+                else if (age.getText().toString().length()==0) {
+                    age.setError("Please enter your age");
                     return;
 
                 }
+                else if (address.getText().toString().length()==0) {
+                    address.setError("Please enter your address");
+                    return;
 
-
-                int selectGender = gender.getCheckedRadioButtonId();
-                btnGender = v.findViewById(selectGender);
-                int pic;
-
-//        For image of gender
-                switch (btnGender.getText().toString()) {
-                    case "Male":
-                        pic = R.drawable.ic_person;
-                        break;
-                    case "Female":
-                        pic = R.drawable.ic_person;
-                        break;
-                    case "Others":
-                        pic = R.drawable.ic_person;
-                        break;
-                    default:
-                        pic = R.drawable.ic_person;
-                        break;
                 }
 
+                else
+                {
+                    int selectGender = gender.getCheckedRadioButtonId();
+                    btnGender = v.findViewById(selectGender);
+                    int pic;
+                    // For image of genders
+                    switch (btnGender.getText().toString()) {
+                        case "Male":
+                            pic = R.drawable.male;
+                            break;
+                        case "Female":
+                            pic = R.drawable.female;
+                            break;
+                        case "Others":
+                            pic = R.drawable.ic_person;
+                            break;
+                        default:
+                            pic = R.drawable.ic_person;
+                            break;
+                    }
 
-                MainActivity.studentList.add(new modelStudent(name.getText().toString(),  address.getText().toString(), btnGender.getText().toString(),Integer.parseInt(age.getText().toString()), pic));
-                Toast toast = Toast.makeText(getContext(), "Student created", Toast.LENGTH_LONG);
-                toast.show();
+
+                    MainActivity.studentList.add(new modelStudent(name.getText().toString(),  address.getText().toString(), btnGender.getText().toString(),Integer.parseInt(age.getText().toString()), pic));
+                    Toast toast = Toast.makeText(getContext(), "Student created", Toast.LENGTH_LONG);
+                    toast.show();
+                }
 
             }
         });
