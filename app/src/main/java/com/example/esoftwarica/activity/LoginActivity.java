@@ -28,15 +28,17 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(etUsername.getText().toString() != "softwarica" || etPassword.getText().toString() != "coventry"){
-//                    Toast.makeText(LoginActivity.this, "Invalid Username or Password", Toast.LENGTH_LONG).show();
-//                    etUsername.requestFocus();
-////                    return;
-//                }
-//                    LoginActivity.this.startActivity(new Intent(LoginActivity.this, MainActivity.class));
-//                    LoginActivity.this.finish();
-                Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                startActivity(intent);
+                if(etUsername.getText().toString().equals("softwarica") && etPassword.getText().toString().equals("coventry")){
+                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this,"Username or Password do not matched", Toast.LENGTH_LONG).show();
+                    etUsername.requestFocus();
+                }
+
             }
         });
 

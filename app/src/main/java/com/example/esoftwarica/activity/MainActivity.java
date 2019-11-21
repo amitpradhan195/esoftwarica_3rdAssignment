@@ -3,31 +3,48 @@ package com.example.esoftwarica.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.esoftwarica.R;
+import com.example.esoftwarica.adapter.MainAdapter;
 import com.example.esoftwarica.fragments.aboutUsFragment;
 import com.example.esoftwarica.fragments.addStudentFragment;
 import com.example.esoftwarica.fragments.homeFragment;
+import com.example.esoftwarica.model.modelStudent;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static List<modelStudent> studentList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Home");
 
         BottomNavigationView bottomNav = findViewById(R.id.bottomNavigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new homeFragment()).commit();
+
+
+        studentList = new ArrayList<>();
+        studentList.add(new modelStudent("Amit Pradhan", "KTM", "Male", 23, R.drawable.ic_person));
+        studentList.add(new modelStudent("Uttam Tamang", "KTM", "Male", 22, R.drawable.ic_person));
+
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -38,14 +55,17 @@ public class MainActivity extends AppCompatActivity {
                     switch(menuItem.getItemId()){
                         case R.id.home:
                             selectedFragment = new homeFragment();
+                            setTitle("Home");
                             break;
 
                         case R.id.addStudent:
                             selectedFragment = new addStudentFragment();
+                            setTitle("Add Student");
                             break;
 
                         case R.id.about:
                             selectedFragment = new aboutUsFragment();
+                            setTitle("About Us");
                             break;
                     }
 
@@ -53,19 +73,4 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 }
             };
-
-//    private void readFromFile(){
-//        try {
-//            FileInputStream fos = openFileInput("Word.txt");
-//            InputStreamReader isr = new InputStreamReader(fos);
-//            BufferedReader br = new BufferedReader(isr);
-//            String line="";
-//            while ((line=br.readLine()) != null){
-//                String[] parts = line.split("->");
-//                dictionary.put(parts[0], parts[1]);
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
 }
